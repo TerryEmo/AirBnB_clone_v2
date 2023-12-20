@@ -1,6 +1,62 @@
 <center> <h1>HBNB - The Console</h1> </center>
 
-This repository contains the initial stage of a student project to build a clone of the AirBnB website. This stage implements a backend interface, or console, to manage program data. Console commands allow the user to create, update, and destroy objects, as well as manage file storage. Using a system of JSON serialization/deserialization, storage is persistent between sessions.
+0x02. AirBnB clone - MySQL
+
+Group project
+
+The repository contains the initial stage of the student project on how build a clone of the AirBnB website. 
+This stage implements a backend interface, or console, to manage program data. Console commands allow the user to create, update, and destroy objects, as well as manage file storage. Using a system of JSON serialization/deserialization, storage is persistent between sessions.
+
+**Creation of a command interpreter to manage the hbnb projects**
+# <p align="center">![alt text](https://github.com/Dikachis/AirBnB_clone/blob/main/web_static/images/65f4a1dd9c51265f49d0.png?raw=true)</p>
+
+# Description
+This is the first step towards building your first full web application: the **AirBnB clone**. The aim of the project is to deploy a replica of the [Airbnb Website](https://www.airbnb.com/) using my server. The final version of this project will have:
+- ```A command interpreter to manipulate data without a visual interface, like a shell (for development and debugging)```
+- ```A website (front-end) with static and dynamic functionalities```
+- ```A comprehensive database to manage the backend functionalities```
+- ```An API that provides a communication interface between the front and backend of the system.```
+
+# For this project you will fork this [codebase:](https://github.com/justinmajetich/AirBnB_clone)
+- update the repository name to ``AirBnB_clone_v2``
+- update the ``README.md`` with your information but don’t delete the initial authors
+- If you are the owner of this repository, please create a new repository named ``AirBnB_clone_v2`` with the same content of ``AirBnB_clone``
+
+# MySQL storage
+- replace the file storage by a Database storage
+- map your models to a table in database by using an O.R.M.
+
+# <p align="center">![alt text](https://github.com/Dikachis/AirBnB_clone/blob/main/web_static/images/AirBNB_MySQL_storage.png?raw=true)</p>
+
+**These are the environment variables that need to be declared in order to run any script with the DataBase storage:**
+```
+- HBNB_ENV: running environment. It can be “dev” or “test” for the moment (“production” soon!)
+- HBNB_MYSQL_USER: the username of your MySQL
+- HBNB_MYSQL_PWD: the password of your MySQL
+- HBNB_MYSQL_HOST: the hostname of your MySQL
+- HBNB_MYSQL_DB: the database name of your MySQL
+- HBNB_TYPE_STORAGE: the type of storage used. It can be “file” (using ``FileStorage``) or ``db`` (using ``DBStorage``)
+```
+**Comments for your SQL file:**
+```
+$ cat my_script.sql
+-- first 3 students in the Batch ID=3
+-- because Batch 3 is the best!
+SELECT id, name FROM students WHERE batch_id = 3 ORDER BY created_at DESC LIMIT 3;
+$
+```
+
+# Resources
+**Read or watch:**
+- [cmd module](https://docs.python.org/3/library/cmd.html)
+- [unittest module](https://docs.python.org/3/library/unittest.html#module-unittest)
+- [args/kwargs](https://yasoob.me/2013/08/04/args-and-kwargs-in-python-explained/)
+- [SQLAlchemy tutorial](https://docs.sqlalchemy.org/en/13/orm/tutorial.html)
+- [How To Create a New User and Grant Permissions in MySQL](https://www.digitalocean.com/community/tutorials/how-to-create-a-new-user-and-grant-permissions-in-mysql)
+- [Python3 and environment variables](https://docs.python.org/3/library/os.html?highlight=env#os.getenv)
+- [SQLAlchemy](https://docs.sqlalchemy.org/en/13/)
+- [MySQL 8.0 SQL Statement Syntax](https://dev.mysql.com/doc/refman/8.0/en/sql-statements.html)
+- [AirBnB clone - ORM](https://www.youtube.com/watch?v=jeJwRB33YNg&feature=youtu.be)
 
 ---
 
@@ -35,7 +91,7 @@ This repository contains the initial stage of a student project to build a clone
 ```
 5. This prompt designates you are in the "HBnB" console. There are a variety of commands available within the console program.
 
-##### Commands
+# Commands
     * create - Creates an instance based on given class
 
     * destroy - Destroys an object based on class and UUID
@@ -48,8 +104,7 @@ This repository contains the initial stage of a student project to build a clone
 
     * quit - Exits the program (EOF will as well)
 
-
-##### Alternative Syntax
+# Alternative Syntax
 Users are able to issue a number of console command using an alternative syntax:
 
 	Usage: <class_name>.<command>([<id>[name_arg value_arg]|[kwargs]])
@@ -66,11 +121,10 @@ Advanced syntax is implemented for the following commands:
     * update - Updates existing attributes an object based on class name and UUID
 
 <br>
-<br>
 <center> <h2>Examples</h2> </center>
 <h3>Primary Command Syntax</h3>
 
-###### Example 0: Create an object
+# Example 0: Create an object
 Usage: create <class_name>
 ```
 (hbnb) create BaseModel
@@ -80,7 +134,7 @@ Usage: create <class_name>
 3aa5babc-efb6-4041-bfe9-3cc9727588f8
 (hbnb)                   
 ```
-###### Example 1: Show an object
+# Example 1: Show an object
 Usage: show <class_name> <_id>
 
 ```
@@ -89,7 +143,7 @@ Usage: show <class_name> <_id>
 'updated_at': datetime.datetime(2020, 2, 18, 14, 21, 12, 96971)}
 (hbnb)  
 ```
-###### Example 2: Destroy an object
+# Example 2: Destroy an object
 Usage: destroy <class_name> <_id>
 ```
 (hbnb) destroy BaseModel 3aa5babc-efb6-4041-bfe9-3cc9727588f8
@@ -97,7 +151,7 @@ Usage: destroy <class_name> <_id>
 ** no instance found **
 (hbnb)   
 ```
-###### Example 3: Update an object
+# Example 3: Update an object
 Usage: update <class_name> <_id>
 ```
 (hbnb) update BaseModel b405fc64-9724-498f-b405-e4071c3d857f first_name "person"
@@ -108,14 +162,14 @@ Usage: update <class_name> <_id>
 ```
 <h3>Alternative Syntax</h3>
 
-###### Example 0: Show all User objects
+# Example 0: Show all User objects
 Usage: <class_name>.all()
 ```
 (hbnb) User.all()
 ["[User] (99f45908-1d17-46d1-9dd2-b7571128115b) {'updated_at': datetime.datetime(2020, 2, 19, 21, 47, 34, 92071), 'id': '99f45908-1d17-46d1-9dd2-b7571128115b', 'created_at': datetime.datetime(2020, 2, 19, 21, 47, 34, 92056)}", "[User] (98bea5de-9cb0-4d78-8a9d-c4de03521c30) {'updated_at': datetime.datetime(2020, 2, 19, 21, 47, 29, 134362), 'id': '98bea5de-9cb0-4d78-8a9d-c4de03521c30', 'created_at': datetime.datetime(2020, 2, 19, 21, 47, 29, 134343)}"]
 ```
 
-###### Example 1: Destroy a User
+# Example 1: Destroy a User
 Usage: <class_name>.destroy(<_id>)
 ```
 (hbnb) User.destroy("99f45908-1d17-46d1-9dd2-b7571128115b")
@@ -123,7 +177,7 @@ Usage: <class_name>.destroy(<_id>)
 (hbnb) User.all()
 (hbnb) ["[User] (98bea5de-9cb0-4d78-8a9d-c4de03521c30) {'updated_at': datetime.datetime(2020, 2, 19, 21, 47, 29, 134362), 'id': '98bea5de-9cb0-4d78-8a9d-c4de03521c30', 'created_at': datetime.datetime(2020, 2, 19, 21, 47, 29, 134343)}"]
 ```
-###### Example 2: Update User (by attribute)
+# Example 2: Update User (by attribute)
 Usage: <class_name>.update(<_id>, <attribute_name>, <attribute_value>)
 ```
 (hbnb) User.update("98bea5de-9cb0-4d78-8a9d-c4de03521c30", name "Todd the Toad")
@@ -131,7 +185,7 @@ Usage: <class_name>.update(<_id>, <attribute_name>, <attribute_value>)
 (hbnb) User.all()
 (hbnb) ["[User] (98bea5de-9cb0-4d78-8a9d-c4de03521c30) {'updated_at': datetime.datetime(2020, 2, 19, 21, 47, 29, 134362), 'id': '98bea5de-9cb0-4d78-8a9d-c4de03521c30', 'name': 'Todd the Toad', 'created_at': datetime.datetime(2020, 2, 19, 21, 47, 29, 134343)}"]
 ```
-###### Example 3: Update User (by dictionary)
+# Example 3: Update User (by dictionary)
 Usage: <class_name>.update(<_id>, <dictionary>)
 ```
 (hbnb) User.update("98bea5de-9cb0-4d78-8a9d-c4de03521c30", {'name': 'Fred the Frog', 'age': 9})
@@ -140,3 +194,6 @@ Usage: <class_name>.update(<_id>, <dictionary>)
 (hbnb) ["[User] (98bea5de-9cb0-4d78-8a9d-c4de03521c30) {'updated_at': datetime.datetime(2020, 2, 19, 21, 47, 29, 134362), 'name': 'Fred the Frog', 'age': 9, 'id': '98bea5de-9cb0-4d78-8a9d-c4de03521c30', 'created_at': datetime.datetime(2020, 2, 19, 21, 47, 29, 134343)}"]
 ```
 <br>
+
+# Authors :black_nib:
+TerryEmo <terrance.sabelo@gmail.com>
